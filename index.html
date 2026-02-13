@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Valentine 💕</title>
+<style>
+body {
+    text-align:center;
+    font-family: Arial;
+    background: linear-gradient(to right, #5c0011, #800000);
+    color: white;
+    margin-top: 150px;
+    overflow: hidden;
+    position: relative;
+}
+
+button {
+    padding:15px 30px;
+    font-size:18px;
+    margin:20px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+}
+
+.yes { background:black; color:white; }
+.no { background:red; color:white; }
+
+.rose {
+    position: absolute;
+    font-size: 30px;
+    animation: floatRose 8s linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes floatRose {
+    from {
+        transform: translateY(100vh) rotate(0deg);
+    }
+    to {
+        transform: translateY(-10vh) rotate(360deg);
+    }
+}
+
+</style>
+</head>
+<body>
+
+<h1> Hello, Mr. Photographer 💕</h1>
+
+<p class="intro">
+You the one who became the next chapter of my life. <br>
+You became the reason to live my life to the fullest and on my own. <br>
+And our son became our roller coaster.
+</p><br><br>
+
+<h1>Will you be my Valentine again? 💖</h1>
+
+<button class="yes" onclick="location.href='yes.html'">YES ❤️</button>
+<button class="no" onclick="location.href='no.html'">NO 😅</button>
+
+<script>
+function createRose() {
+    const rose = document.createElement("div");
+    rose.classList.add("rose");
+    rose.innerHTML = "🌹";
+    rose.style.left = Math.random() * 100 + "vw";
+    rose.style.animationDuration = (Math.random() * 5 + 5) + "s";
+    document.body.appendChild(rose);
+
+    setTimeout(() => {
+        rose.remove();
+    }, 8000);
+}
+
+setInterval(createRose, 500);
+</script>
+
+
+</body>
+</html>

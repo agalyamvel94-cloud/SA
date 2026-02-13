@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>To My Valentine 💕</title>
+<style>
+body{
+    text-align:center;
+    background:#111;
+    color:white;
+    font-family:Arial;
+    
+}
+video {
+    display: block;
+    margin: 40px auto;   /* centers horizontally */
+    width: 90%;          /* responsive large size */
+    max-width: 1000px;   /* maximum size */
+    border-radius: 25px;
+}
+
+h1{
+    margin-bottom:10px;   /* reduce space below heading */
+}
+
+img{
+    width:800px;
+    margin-top:20px;
+    border-radius:200px;
+    border: 6px solid white;
+    box-shadow: 0 0 20px gold;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>❤️ I Love You SHARUN ❤️</h1>
+<h1>❤️ I am proud to have you as my husband and a father to our little one ❤️<h1>
+
+<img id="slide" src="photos/photo5.jpeg">
+<video id="endingVideo" muted controls 
+       style="display:none;">
+    <source src="file:///D:/Software testing/SA/Valentine-Surprise/ending.mp4" type="video/mp4">
+</video>
+
+
+<audio id="bgMusic">
+    <source src="file:///D:/Software testing/SA/Valentine-Surprise/music.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+let photos = [
+"photos/photo5.jpeg",
+"photos/photo2.jpeg",
+"photos/photo3.jpeg",
+"photos/photo4.jpeg",
+"photos/photo7.jpeg",
+"photos/photo8.jpeg",
+"photos/photo9.jpeg",
+"photos/photo11.jpeg",
+"photos/photo12.jpeg",
+"photos/photo13.jpeg",
+"photos/photo14.jpeg",
+"photos/photo15.jpeg",
+"photos/photo16.jpeg",
+"photos/photo18.jpeg",
+"photos/photo19.jpeg",
+"photos/photo21.jpeg",
+"photos/photo22.jpeg"
+];
+
+let index = 0;
+let slideInterval;
+let slide = document.getElementById("slide");
+let endingVideo = document.getElementById("endingVideo");
+
+slideInterval = setInterval(function(){
+
+    index++;
+
+    if(index < photos.length){
+        slide.src = photos[index];
+    } 
+    else {
+        clearInterval(slideInterval);   // 🛑 STOP slideshow
+        slide.style.display = "none";   // hide image
+
+        endingVideo.style.display = "block";  // show video
+        endingVideo.play();  // play ending video
+    }
+
+},4000);
+window.onload = function(){
+    let music = document.getElementById("bgMusic");
+    music.play().catch(function(error){
+        console.log("Autoplay blocked. Waiting for interaction.");
+    });
+};
+
+</script>
+
+</body>

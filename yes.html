@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Valentine's Day ❤️</title>
+
+<style>
+body{
+    margin:0;
+    background:black;
+    color:white;
+    text-align:center;
+    font-family:Arial;
+    overflow:hidden;
+}
+
+h1{
+    font-size:50px;
+    margin-top:200px;
+    opacity:0;
+    transition: opacity 2s ease-in;
+}
+
+.showText{
+    opacity:1;
+}
+
+button{
+    padding:15px 30px;
+    font-size:20px;
+    border:none;
+    border-radius:30px;
+    background:red;
+    color:white;
+    cursor:pointer;
+    margin-top:40px;
+    opacity:0;
+    transition: opacity 2s ease-in;
+}
+
+.showButton{
+    opacity:1;
+}
+
+/* BURSTING HEARTS */
+.heart{
+    position:absolute;
+    font-size:25px;
+    color:red;
+    animation:burst 3s linear forwards;
+}
+
+@keyframes burst{
+    from{
+        transform:translate(0,0) scale(1);
+        opacity:1;
+    }
+    to{
+        transform:translate(
+            calc(100vw * (randomX)),
+            calc(-100vh)
+        ) scale(2);
+        opacity:0;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<h1 id="valText">Happy Valentine’s Day Sharun ❤️</h1>
+
+
+
+<button id="nextBtn" onclick="goToSlideshow()">
+Click here dear 💕
+</button>
+
+
+<script>
+
+/* BURST EFFECT */
+function createHeart(){
+    const heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.top="100vh";
+    heart.style.animationDuration=(Math.random()*2+2)+"s";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{heart.remove();},3000);
+}
+
+/* Burst many hearts at start */
+for(let i=0;i<100;i++){
+    setTimeout(createHeart,i*50);
+}
+
+/* Show text after 3 seconds */
+setTimeout(function(){
+    document.getElementById("valText").classList.add("showText");
+},3000);
+
+/* Show button after 5 seconds */
+setTimeout(function(){
+    document.getElementById("nextBtn").classList.add("showButton");
+},5000);
+
+function goToSlideshow(){
+    localStorage.setItem("playMusic", "yes");
+    window.location.href = "slideshow.html";
+}
+
+
+
+</script>
+
+</body>
+</html>
